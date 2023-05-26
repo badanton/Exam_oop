@@ -8,6 +8,7 @@
 import string
 
 
+
 class Alphabet:
     def __init__(self, lang, letters):
         self.lang = lang
@@ -52,9 +53,36 @@ class EngAlphabet(Alphabet):
         print('Пример текста на английском - fatal: not a git repository (or any of the parent directories)')
 
 
+class RuAlphabet(Alphabet):
+    def __init__(self):
+        super().__init__('Ru', 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ')
+        self.__letters_num = len('АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ')
+
+    def is_ru_letter(self, letter):
+        if letter.upper() in self.letters:
+            print('Относится к русскому алфавиту')
+        else:
+            print('Не относится к русскому алфавиту')
+
+
+    def letters_num(self):
+        print(self.__letters_num)
+
+    @staticmethod
+    def example():
+        print('Пример текста на русском :)')
+
+
 object1 = EngAlphabet()
 object1.print()
 object1.letters_num()
 object1.is_en_letter('F')
 object1.is_en_letter('Щ')
 EngAlphabet.example()
+
+object2 = RuAlphabet()
+object2.print()
+object2.letters_num()
+object2.is_ru_letter('Д')
+object2.is_ru_letter('G')
+RuAlphabet.example()
